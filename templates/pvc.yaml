@@ -5,8 +5,8 @@ metadata:
   # namespace: redis-server
 spec:
   accessModes:
-    - ReadWriteOnce
-  storageClassName: nfs-client
+    - ReadWriteMany
+  storageClassName: longhorn
   resources:
     requests:
       storage: 100Gi
