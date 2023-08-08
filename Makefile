@@ -14,6 +14,12 @@ HELM_OFFICIAL_CHART = https://bananaspliff.github.io/geek-charts/
 
 # HELM
 HELM_BIN ?= helm
+FORCE ?=
+ifeq ($(strip ${FORCE}),true)
+SET_FORCE := --force
+else
+SET_FORCE :=
+endif
 
 help:
 	@awk 'BEGIN {FS = ":.*##"; printf "Usage: make \033[36m<command> <option>\033[0m\n"} /^[a-zA-Z0-9_-]+:.*?##/ { printf "  \033[36m%-20s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\033[1m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
@@ -32,8 +38,8 @@ template: ## Helm template
 	@${HELM_BIN} dep update ${HELM_CHART_DIR}
 	@${HELM_BIN} template ${RELEASE_NAME} ${HELM_CHART_DIR} --namespace ${NAMESPACE} -f ${HELM_CHART_DIR}/values.${ENV}.yaml
 dry-run: template warning ## Template plus dry-run of the helm chart
-	@${HELM_BIN} upgrade --dry-run --force --install --namespace ${NAMESPACE} -f ${HELM_CHART_DIR}/values.${ENV}.yaml ${RELEASE_NAME} ${HELM_CHART_DIR}
+	@${HELM_BIN} upgrade --dry-run ${SET_FORCE} --install --namespace ${NAMESPACE} -f ${HELM_CHART_DIR}/values.${ENV}.yaml ${RELEASE_NAME} ${HELM_CHART_DIR}
 install: warning ## Helm intallation
-	@${HELM_BIN} upgrade --force --install --namespace ${NAMESPACE} --create-namespace -f ${HELM_CHART_DIR}/values.${ENV}.yaml ${RELEASE_NAME} ${HELM_CHART_DIR}
+	@${HELM_BIN} upgrade ${SET_FORCE} --install --namespace ${NAMESPACE} --create-namespace -f ${HELM_CHART_DIR}/values.${ENV}.yaml ${RELEASE_NAME} ${HELM_CHART_DIR}
 logs: ## Get pod logs
 	@kubectl logs --since=1h -f -n ${NAMESPACE} $(pod)
