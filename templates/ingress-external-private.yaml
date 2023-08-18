@@ -1,7 +1,7 @@
-{{- if .Values.transmissionContext.ingressInternal.enabled -}}
+{{- if .Values.transmissionContext.ingressExternalPrivate.enabled -}}
 {{- $fullName := include "transmissionContext.fullname" . -}}
 {{- $name := include "transmissionContext.name" . -}}
-{{- $ingressPath := .Values.transmissionContext.ingressInternal.path -}}
+{{- $ingressPath := .Values.transmissionContext.ingressExternalPrivate.path -}}
 {{- if semverCompare ">=1.19-0" .Capabilities.KubeVersion.GitVersion -}}
 apiVersion: networking.k8s.io/v1
 {{- else -}}
@@ -9,23 +9,23 @@ apiVersion: networking.k8s.io/v1beta1
 {{- end }}
 kind: Ingress
 metadata:
-  name: {{ $name }}-internal
+  name: {{ $name }}-external-private
   labels:
     app: {{ template "transmissionContext.name" . }}
     chart: {{ template "transmissionContext.chart" . }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
-{{- with .Values.transmissionContext.ingressInternal.annotations }}
+{{- with .Values.transmissionContext.ingressExternalPrivate.annotations }}
   annotations:
 {{ toYaml . | indent 4 }}
 {{- end }}
 spec:
-  {{- if and .Values.transmissionContext.ingressInternal.ingressClassName (semverCompare ">=1.18-0" .Capabilities.KubeVersion.GitVersion) }}
-  ingressClassName: {{ .Values.transmissionContext.ingressInternal.ingressClassName }}
+  {{- if and .Values.transmissionContext.ingressExternalPrivate.ingressClassName (semverCompare ">=1.18-0" .Capabilities.KubeVersion.GitVersion) }}
+  ingressClassName: {{ .Values.transmissionContext.ingressExternalPrivate.ingressClassName }}
   {{- end }}
-{{- if .Values.transmissionContext.ingressInternal.tls }}
+{{- if .Values.transmissionContext.ingressExternalPrivate.tls }}
   tls:
-  {{- range .Values.transmissionContext.ingressInternal.tls }}
+  {{- range .Values.transmissionContext.ingressExternalPrivate.tls }}
     - hosts:
       {{- range .hosts }}
         - {{ . }}
@@ -34,7 +34,7 @@ spec:
   {{- end }}
 {{- end }}
   rules:
-  {{- range .Values.transmissionContext.ingressInternal.hosts }}
+  {{- range .Values.transmissionContext.ingressExternalPrivate.hosts }}
     - host: {{ . }}
       http:
         paths:
