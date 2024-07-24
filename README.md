@@ -1,5 +1,7 @@
 # Welcome to gitlab
 
+[![App Status](https://argocd-internal.spirit-dev.net/api/badge?name=transmission-turingpi&revision=true&showAppName=true)](https://argocd-internal.spirit-dev.net/applications/transmission-turingpi)
+
 ## Table of content
 
 - [Welcome to gitlab](#welcome-to-gitlab)
