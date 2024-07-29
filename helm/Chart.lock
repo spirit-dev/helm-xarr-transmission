@@ -1,0 +1,6 @@
+dependencies:
+- name: transmission-openvpn
+  repository: https://bananaspliff.github.io/geek-charts/
+  version: 0.1.0
+digest: sha256:a5550a5d01fc57e882d74e183e2d65ba3775faf5fd46bf3f7583f7c8d63ae6a3
+generated: "2023-08-04T17:29:26.982088991-04:00"
