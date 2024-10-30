@@ -4,11 +4,7 @@
 
 ## Table of content
 
-- [Welcome to gitlab](#welcome-to-gitlab)
-  - [Table of content](#table-of-content)
-  - [Installation process](#installation-process)
-  - [Exemples](#exemples)
-  - [Env var](#env-var)
+[[_TOC_]]
 
 ## Installation process
 
