@@ -1,3 +1,9 @@
+transmissionContext:
+  ingressInternal:
+    enabled: false
+  ingressExternalPrivate:
+    enabled: false
+
 transmission-openvpn:
   # Optimized for airvpn.
 
@@ -52,7 +58,7 @@ transmission-openvpn:
     hosts:
       - transmission.bananaspliff.org
     tls:
-      - secretName: transmission-bananaspliff-org
+      - secretName: transmission-bananaspliff-org # pragma: allowlist secret
         hosts:
           - transmission.bananaspliff.org
 
@@ -80,7 +86,7 @@ transmission-openvpn:
         claimName: myvolume
     - name: config
       secret:
-        secretName: "openvpn-common-config"
+        secretName: "openvpn-common-config" # pragma: allowlist secret
     - name: dev-tun
       hostPath:
         path: "/dev/net/tun"
