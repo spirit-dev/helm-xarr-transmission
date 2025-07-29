@@ -1,4 +1,9 @@
 transmissionContext:
+  ovpn_client: |- # pragma: allowlist secret
+    ...
+  credentials:
+    username: ""
+    password: ""
   ingressInternal:
     enabled: false
   ingressExternalPrivate:
