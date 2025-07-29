@@ -1,0 +1,6 @@
+**/*.tgz
+out*.yaml
+
+helm/charts
+
+docker-tmp
