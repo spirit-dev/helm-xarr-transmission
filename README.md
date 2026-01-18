@@ -1,8 +1,6 @@
 # transmission
 
-[![GitLab Sync](https://img.shields.io/badge/gitlab_sync-transmission-blue?style=for-the-badge&logo=gitlab)](https://gitlab-internal.spirit-dev.net/github-mirror/helm-xarr-transmission) <!-- markdownlint-disable MD041 -->
-[![GitHub Mirror](https://img.shields.io/badge/github_mirror-transmission-blue?style=for-the-badge&logo=github)](https://github.com/spirit-dev/helm-xarr-transmission)
-[![App Status](https://argocd-internal.spirit-dev.net/api/badge?name=transmission-turingpi&revision=true&showAppName=true)](https://argocd-internal.spirit-dev.net/applications/transmission-turingpi)
+
 
 <!--TOC-->
 
@@ -56,4 +54,4 @@ Here is a list of interesting environment variables:
   value: "false"
 ```
 
-a complete list of interesting vars is available [in values.yaml file](https://github.com/truecharts/charts/blob/master/charts/stable/transmission/values.yaml)
+a complete list of interesting vars is available [in values.yaml file](https://github.com/truecharts/charts/blob/master/charts/stable/transmission/values.yaml
