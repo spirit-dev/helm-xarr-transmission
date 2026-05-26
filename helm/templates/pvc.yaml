@@ -2,14 +2,15 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: transmission-downloads
+  name: transmission-downloads-smb
 spec:
   accessModes:
     - ReadWriteMany
-  storageClassName: longhorn
+  storageClassName: "smb"
   resources:
     requests:
       storage: 270Gi
+  volumeName: "csi-smb-pv-smb-transmission-seed"
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
