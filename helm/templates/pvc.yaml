@@ -9,7 +9,7 @@ spec:
   storageClassName: "smb"
   resources:
     requests:
-      storage: 3580Gi
+      storage: 100Gi
   volumeName: "csi-smb-pv-smb-transmission-seed"
 ---
 apiVersion: v1
